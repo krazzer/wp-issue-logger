@@ -1,0 +1,14 @@
+{
+  "name": "krazzer/wp-issue-logger",
+  "description": "Issue logger for WordPress backend functionality (e.g. API calls)",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Kaz van Wel",
+      "email": "info@kiksaus.nl"
+    }
+  ],
+  "require": {
+  }
+}
