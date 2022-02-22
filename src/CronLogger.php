@@ -23,6 +23,6 @@ class CronLogger
      */
     public function log(string $cronKey): ResponseInterface
     {
-        return $this->api->post('wp-log/ping/' . $cronKey);
+        return $this->api->post('ping/' . $cronKey);
     }
 }

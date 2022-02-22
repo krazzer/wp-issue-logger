@@ -2,7 +2,6 @@
 
 namespace WPIssueLogger;
 
-use JetBrains\PhpStorm\Pure;
 use Psr\Http\Message\ResponseInterface;
 
 class WpIssueLogger
@@ -12,38 +11,39 @@ class WpIssueLogger
 
     /** @var IssueLogger */
     private IssueLogger $issueLogger;
-
-    /** @var string */
-    private string $envKey;
+    private string      $email;
 
     /**
      * @param string $url
      * @param string $apiKey
-     * @param string $envKey
+     * @param string $email
      */
-    #[Pure] public function __construct(string $url, string $apiKey, string $envKey)
+    public function __construct(string $url, string $apiKey, string $email)
     {
         $logger = new Api($url, $apiKey);
 
         $this->cronLogger  = new CronLogger($logger);
-        $this->issueLogger = new IssueLogger($logger);
+        $this->issueLogger = new IssueLogger();
 
-        $this->envKey = $envKey;
+        $this->email = $email;
     }
 
     /**
+     * @param string $cronKey
      * @return ResponseInterface
      */
-    public function logCron(): ResponseInterface
+    public function logCron(string $cronKey): ResponseInterface
     {
-        return $this->cronLogger->log($this->envKey);
+        return $this->cronLogger->log($cronKey);
     }
 
     /**
-     * @return ResponseInterface
+     * @param string $message
+     * @param string $traceString
+     * @return bool
      */
-    public function logIssue(): ResponseInterface
+    public function logIssue(string $message, string $traceString): bool
     {
-        return $this->issueLogger->log($this->envKey);
+        return $this->issueLogger->log($message, $traceString, $this->email);
     }
 }

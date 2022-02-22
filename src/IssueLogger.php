@@ -2,27 +2,20 @@
 
 namespace WPIssueLogger;
 
-use Psr\Http\Message\ResponseInterface;
-
 class IssueLogger
 {
-    /** @var Api */
-    private Api $api;
-
     /**
-     * @param Api $api
+     * @param string $message
+     * @param string $traceString
+     * @param string $email
+     * @return bool
      */
-    public function __construct(Api $api)
+    public function log(string $message, string $traceString, string $email): bool
     {
-        $this->api = $api;
-    }
+        if ( ! function_exists('wp_mail')) {
+            return false;
+        }
 
-    /**
-     * @param string $envKey
-     * @return ResponseInterface
-     */
-    public function log(string $envKey): ResponseInterface
-    {
-        return $this->api->post('issue', ['env' => $envKey]);
+        return wp_mail($email, 'WP Issue: ' . $message, $message . "\n\n" . $traceString);
     }
 }

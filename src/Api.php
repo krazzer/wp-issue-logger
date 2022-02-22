@@ -34,6 +34,6 @@ class Api
 
         $params['apiKey'] = $this->apiKey;
 
-        return $client->post($this->url . '/' . $path, $params);
+        return $client->post($this->url . '/' . $path, ['form_params' => $params]);
     }
 }
