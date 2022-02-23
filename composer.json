@@ -1,7 +1,7 @@
 {
   "name": "krazzer/wp-issue-logger",
   "description": "Issue logger for WordPress backend functionality (e.g. API calls)",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "Kaz van Wel",
