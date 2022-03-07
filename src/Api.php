@@ -8,10 +8,10 @@ use Psr\Http\Message\ResponseInterface;
 class Api
 {
     /** @var string */
-    private string $url;
+    private $url;
 
     /** @var string */
-    private string $apiKey;
+    private $apiKey;
 
     /**
      * @param string $url

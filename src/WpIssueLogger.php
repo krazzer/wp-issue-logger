@@ -7,11 +7,13 @@ use Psr\Http\Message\ResponseInterface;
 class WpIssueLogger
 {
     /** @var CronLogger */
-    private CronLogger $cronLogger;
+    private $cronLogger;
 
     /** @var IssueLogger */
-    private IssueLogger $issueLogger;
-    private string      $email;
+    private $issueLogger;
+
+    /** @var string */
+    private $email;
 
     /**
      * @param string $url

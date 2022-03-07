@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 class CronLogger
 {
     /** @var Api */
-    private Api $api;
+    private $api;
 
     /**
      * @param Api $api
